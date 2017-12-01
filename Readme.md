@@ -73,4 +73,3 @@ Dnach noch eine CommitMessage und dann auf Commit Changes
 Als letztes müsst ihr den Commit jetzt aufs GitHub pushen
 
 ![GitKraken](https://puu.sh/yxjEG/6b8bbb324a.png "Staging")
->>>>>>> Stashed changes
