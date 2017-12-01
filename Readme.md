@@ -1,4 +1,4 @@
-Version: 0.5a
+Version: 1.0
 
 # ActiveSlide
 
@@ -82,3 +82,6 @@ Der türkise ist euer lokaler Stand.
 
 
 ![GitKraken](https://puu.sh/yxkx9/17e51959f4.png "Staging")
+
+Deleted den Stash und holt euch die neueste Version, dann pushed ihr nocheinmal.<br>
+Da wir nur mit einem brand arbeiten und die später nicht mergen werden.
