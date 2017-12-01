@@ -39,3 +39,38 @@ Klont das Repository mit Git oder GitHub Desktop in ein lokales Repository.
 ![IDE](https://puu.sh/yxhAj/95ac6e0ef5.png "Geklontes Rep auswählen")
 
 ![IDE](https://puu.sh/yxhAM/92a9b2a016.png "Server auswählen")
+<<<<<<< Updated upstream
+=======
+
+### 1.3 Repository in eurer IDE einbinden
+
+Hier sind alle Commits von euch und anderen Mitgliedern zu sehen<br>
+Außerdem wird angezeigt, welche Files geändert wurden und man kann sich anzeigen lassen <br>
+Wie der Unterschied vorher/nachher war.
+
+![GitKraken](https://puu.sh/yxjgd/8b016059ca.png "Überblick")
+
+Verändert ihr nun ein File in eurer IDE, wird diese in der IDE highlighted (Readme.md)<br>
+Wenn ihr soweit fertig seid, testet ihr die Funktionen lokal und bei Fertigstellung macht ihr ein Commit.
+
+![IDE](https://puu.sh/yxjpO/a56c7b1d09.png "Changes")
+
+####Commit
+
+Bei //WIP kommt der Titel des Commits
+
+![GitKraken](https://puu.sh/yxjvf/2697d37e35.png "Was wurde geändert")
+
+Ihr könnt dann nochmal ein BLick auf die Veränderungen machen.<br>
+Dann Staged ihr das/die File/Files
+
+![GitKraken](https://puu.sh/yxjyF/6aab831c99.png "Staging")
+
+Dnach noch eine CommitMessage und dann auf Commit Changes
+
+![GitKraken](https://puu.sh/yxjBS/7e0b3eb015.png "Staging")
+
+Als letztes müsst ihr den Commit jetzt aufs GitHub pushen
+
+![GitKraken](https://puu.sh/yxjEG/6b8bbb324a.png "Staging")
+>>>>>>> Stashed changes
