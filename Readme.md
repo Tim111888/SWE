@@ -39,8 +39,6 @@ Klont das Repository mit Git oder GitHub Desktop in ein lokales Repository.
 ![IDE](https://puu.sh/yxhAj/95ac6e0ef5.png "Geklontes Rep auswählen")
 
 ![IDE](https://puu.sh/yxhAM/92a9b2a016.png "Server auswählen")
-<<<<<<< Updated upstream
-=======
 
 ### 1.3 Repository in eurer IDE einbinden
 
