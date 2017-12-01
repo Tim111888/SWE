@@ -27,8 +27,7 @@ Schreibt mir dazu einfach in WhatsApp euren Benutzernamen, damit ich euch einlad
 
 ### 1.1 Arbeitsumgebung schaffen
 
-Klont das Repository mit Git oder GitHub Desktop in ein lokales Repository.
-![GitHub Desktop](https://puu.sh/yxh8s/06b142e6ac.png "GitHub Desktop")
+Klont das Repository mit Git oder GitKrakenp in ein lokales Repository.
 
 ### 1.2 Repository in eurer IDE einbinden
 
