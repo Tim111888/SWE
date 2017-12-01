@@ -53,7 +53,9 @@ Wenn ihr soweit fertig seid, testet ihr die Funktionen lokal und bei Fertigstell
 
 ![IDE](https://puu.sh/yxjpO/a56c7b1d09.png "Changes")
 
-####Commit
+Hier blau markiert 
+
+## Local auf Master pushen
 
 Bei //WIP kommt der Titel des Commits
 
@@ -71,3 +73,12 @@ Dnach noch eine CommitMessage und dann auf Commit Changes
 Als letztes müsst ihr den Commit jetzt aufs GitHub pushen
 
 ![GitKraken](https://puu.sh/yxjEG/6b8bbb324a.png "Staging")
+
+## Master auf Local pullen
+
+Wie man hier sieht, gibt es "2 master" brands.
+Der blaue ist der momenante Stand auf dem GitHub
+Der türkise ist euer lokaler Stand.
+
+
+![GitKraken](https://puu.sh/yxkx9/17e51959f4.png "Staging")
