@@ -1,4 +1,4 @@
-Version: 0.3a
+Version: 0.5a
 
 # ActiveSlide
 
