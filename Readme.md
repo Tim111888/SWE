@@ -85,3 +85,6 @@ Der türkise ist euer lokaler Stand.
 
 Deleted den Stash und holt euch die neueste Version, dann pushed ihr nocheinmal.<br>
 Da wir nur mit einem brand arbeiten und die später nicht mergen werden.
+
+Wenn es eine neue Version des Masters gibt, wird diese angezeigt.
+Diese kann dann einfach gepulled werden.
