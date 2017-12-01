@@ -40,6 +40,3 @@ Klont das Repository mit Git oder GitHub Desktop in ein lokales Repository.
 
 ![IDE](https://puu.sh/yxhAM/92a9b2a016.png "Server auswählen")
 
-Dann nurnoch einen Namen geben und ihr könnt Scripts in PHPstorm ausführen und habe zeitgleich Zugriff auf euer lokales 
-Repository.
-
