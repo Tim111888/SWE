@@ -11,6 +11,12 @@
 		document.forms['register'].change_lang.value = lang_iso;
 		document.forms['register'].submit.click();
 	}
+
+	function change(){
+		var useremail = document.getElementById("email").value;
+        alert(useremail);
+		document.getElementById("username").value = useremail;
+	}
 // ]]>
 </script>
 
@@ -36,16 +42,7 @@
 						<div class="form-group">
 							<div class="col-xs-12">
 								<div class="icon-addon addon-lg">
-									<input type="text" placeholder="{L_USERNAME}" name="username" id="username" value="{USERNAME}" size="10" class="form-control" title="{L_USERNAME}" value="{USERNAME}" tabindex="1" autofocus/>
-									<label for="username" class="fa fa-user" rel="tooltip" title="username"></label>
-									<span class="help-block">{L_USERNAME_EXPLAIN}</span>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-xs-12">
-								<div class="icon-addon addon-lg">
-									<input type="email" placeholder="{L_EMAIL_ADDRESS}" name="email" id="email" value="{EMAIL}" size="10" class="form-control" title="{L_EMAIL_ADDRESS}" tabindex="2" autocomplete="off" />
+									<input type="text" placeholder="{L_EMAIL_ADDRESS}" name="email" id="email"  size="10" class="form-control" title="{L_EMAIL_ADDRESS}" tabindex="2" autocomplete="off" />
 									<label for="email" class="fa fa-envelope" rel="tooltip" title="email"></label>
 								</div>
 							</div>
@@ -66,16 +63,7 @@
 							</div>
 						</div>
 						<!-- EVENT ucp_register_credentials_after -->
-						<hr/>
-						<!-- EVENT ucp_register_options_before -->
-						<div class="form-group">
-							<label for="lang" class="control-label col-md-4">{L_LANGUAGE}{L_COLON}</label>
-							<div class="col-md-8">
-								<select name="lang" id="lang" onchange="change_language(this.value); return false;" tabindex="6" title="{L_LANGUAGE}">{S_LANG_OPTIONS}</select>
-							</div>
-						</div>
 
-						<!-- INCLUDE timezone_option.html -->
 
 						<!-- EVENT ucp_register_profile_fields_before -->
 						<!-- IF .profile_fields -->
@@ -124,7 +112,8 @@
 							</div>
 							<div class="col-xs-12 col-md-6">
 								<div class="form-group">
-									<input type="submit" tabindex="9" name="submit" id="submit" value="{L_SUBMIT}" class="btn btn-success default-submit-action btn-block btn-lg" />
+									<input type="hidden" name="username" id="username">
+									<input type="submit" tabindex="9" onclick="change()" name="submit" id="submit" value="{L_SUBMIT}" class="btn btn-success default-submit-action btn-block btn-lg" />
 								</div>
 							</div>
 						</div>
