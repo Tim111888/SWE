@@ -15,7 +15,7 @@ GitHub Account zur Mitarbeit am Rep
 Als Entwicklungsumgebung.
 * [XAMPP](https://www.apachefriends.org/download.html) <br>
 Zum Ausführen der PHP Scripts
-* [GitHub Desktop](https://central.github.com/deployments/desktop/desktop/latest/win32) oder [Git](https://github.com/git-for-windows/git/releases/download/v2.15.1.windows.2/Git-2.15.1.2-64-bit.exe)<br>
+* [GitKraken](https://www.gitkraken.com/download/windows64) oder [Git](https://github.com/git-for-windows/git/releases/download/v2.15.1.windows.2/Git-2.15.1.2-64-bit.exe)<br>
 Um den Dateiaustausch zwischen GitHub Repository und eurem Lokalen Repository zu realisieren
 
 ##Zugriff erhalten
