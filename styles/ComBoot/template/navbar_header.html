@@ -21,6 +21,7 @@
 				</button>
 			<!-- ENDIF -->
 		</div>
+
 		<div class="collapse navbar-collapse pull-left-desktop" id="main-menu">
 			<ul class="nav navbar-nav">
 				<li id="quick-links" class="dropdown <!-- IF not S_DISPLAY_QUICK_LINKS and not S_DISPLAY_SEARCH --> hidden<!-- ENDIF -->" data-skip-responsive="true">
@@ -43,7 +44,6 @@
 							<li class="divider"></li>
 							<li><a href="{U_SEARCH}" role="menuitem">{L_SEARCH}</a></li>
 						<!-- ENDIF -->
-
 						<!-- IF not S_IS_BOT and (S_DISPLAY_MEMBERLIST or U_TEAM) -->
 							<li class="divider"></li>
 							<!-- IF S_DISPLAY_MEMBERLIST --><li><a href="{U_MEMBERLIST}" role="menuitem"><i class="fa fa-group fa-fw" aria-hidden="true"></i> {L_MEMBERLIST}</a></li><!-- ENDIF -->
@@ -76,6 +76,22 @@
 		<div class="collapse navbar-collapse pull-right-desktop" id="user-menu">
 			<!-- Desktop user menu -->
 			<ul class="nav navbar-nav navbar-right hidden-xs fix-right-nav">
+
+				<li><a>Momentan zeigen auf</a></li>
+					<li>
+						<form method="get" action="viewforum.php">
+							<input hidden name="f" value={F_ID}>
+							<input hidden name="sid" value={U_SID}>
+							<input hidden name="aufzeigen" value="true">
+						<button>{UP_COUNTER}</button>
+
+				</form>
+				</li>
+
+
+				<!-- IF F_OWNER-->
+				<!-- ENDIF -->
+
 				<!-- IF S_DISPLAY_PM -->
 					<li>
 						<a href="{U_PRIVATEMSGS}">

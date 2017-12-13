@@ -359,7 +359,6 @@ if ($module->is_active('zebra', 'friends'))
 
 		$template->assign_block_vars("friends_{$which}", array(
 			'USER_ID'		=> $row['user_id'],
-
 			'U_PROFILE'		=> get_username_string('profile', $row['user_id'], $row['username'], $row['user_colour']),
 			'USER_COLOUR'	=> get_username_string('colour', $row['user_id'], $row['username'], $row['user_colour']),
 			'USERNAME'		=> get_username_string('username', $row['user_id'], $row['username'], $row['user_colour']),
