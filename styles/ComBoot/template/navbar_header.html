@@ -127,6 +127,9 @@
 							<!-- IF U_MCP -->
 							<li><a href="{U_MCP}" title="{L_MCP}"><i class="fa fa-gavel fa-fw" aria-hidden="true"></i> {L_MCP_SHORT}</a></li>
 							<!-- ENDIF -->
+							<!-- IF U_ACP -->
+							<li><a href="viewforum.php?f={FORUM_ID}&sid={SESSION_ID}&action=weblinks" title="Weblinks Verwalten"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>Weblinks Verwalten</a></li>
+							<!-- ENDIF -->
 							<!-- EVENT navbar_header_profile_list_after -->
 							<li class="divider"></li>
 							<li><button class="btn btn-danger btn-block" type="button" title="{L_LOGIN_LOGOUT}" onclick="window.location.href='{U_LOGIN_LOGOUT}'" accesskey="x"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> {L_LOGIN_LOGOUT}</button></li>
@@ -179,6 +182,9 @@
 					<!-- ENDIF -->
 					<!-- IF U_MCP -->
 					<li><a href="{U_MCP}" title="{L_MCP}"><i class="fa fa-gavel fa-fw" aria-hidden="true"></i> {L_MCP_SHORT}</a></li>
+					<!-- ENDIF -->
+					<!-- IF U_ACP -->
+					<li><a href="Page" title="Weblinks Verwalten"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>Weblinks Verwalten</a></li>
 					<!-- ENDIF -->
 					<!-- EVENT navbar_header_profile_list_after -->
 					<li class="divider"></li>
