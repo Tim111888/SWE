@@ -21,6 +21,15 @@ include($phpbb_root_path . 'common.' . $phpEx);
 include($phpbb_root_path . 'includes/functions_display.' . $phpEx);
 include($phpbb_root_path . 'ActiveSlideVirtualUpvote.' . $phpEx);
 
+if(isset($_GET["action"]))
+{
+    $template->assign_var('IS_VISIBLE', true);
+}
+else
+{
+    $template->assign_var('IS_VISIBLE', false);
+}
+
 // Start session
 $user->session_begin();
 $auth->acl($user->data);
@@ -1002,5 +1011,7 @@ if ($forum_data['forum_type'] == FORUM_POST && sizeof($topic_list) && $mark_foru
 {
 	update_forum_tracking_info($forum_id, $forum_data['forum_last_post_time'], false, $mark_time_forum);
 }
+
+
 
 page_footer();
