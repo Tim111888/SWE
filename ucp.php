@@ -20,6 +20,7 @@ $phpEx = substr(strrchr(__FILE__, '.'), 1);
 require($phpbb_root_path . 'common.' . $phpEx);
 require($phpbb_root_path . 'includes/functions_user.' . $phpEx);
 require($phpbb_root_path . 'includes/functions_module.' . $phpEx);
+include($phpbb_root_path . 'ActiveSlideVirtualUpvote.' . $phpEx);
 
 // Basic parameter data
 $id 	= $request->variable('i', '');
@@ -37,6 +38,37 @@ $user->setup('ucp');
 
 // Setting a variable to let the style designer know where he is...
 $template->assign_var('S_IN_UCP', true);
+
+//ActiveSlide
+$session_id = request_var('sid', string);
+
+if($session_id!=""){
+    $sql = "SELECT * FROM phpbb_sessions WHERE session_id='$session_id'";
+    $result = $db->sql_query($sql);
+    while($row = $db->sql_fetchrow($result))
+        $lastforum = (int)$row['session_last_forum'];
+
+    if($lastforum>0){
+        /** Welchem Dozenten gehört das Forum*/
+        $sql = "SELECT owner FROM phpbb_forums WHERE forum_id=$lastforum";
+        $result = $db->sql_query($sql);
+        while($row = $db->sql_fetchrow($result))
+            $ownerID = (int)$row['owner'];
+
+        $sql = "SELECT PK_UpvotesID FROM ActiveSlide_Upvotes WHERE FK_UserID=$ownerID";
+        $result = $db->sql_query($sql);
+        while($row = $db->sql_fetchrow($result))
+            $upvoteID = (int)$row['PK_UpvotesID'];
+
+        $sql = "SELECT COUNT(FK_UpvoteID) FROM ActiveSlide_Upvotes_ztbl WHERE FK_UpvoteID='$upvoteID'";
+        $result = $db->sql_query($sql);
+        while($row = $db->sql_fetchrow($result))
+            $counter = (int)$row['COUNT(FK_UpvoteID)'];
+    }
+
+    $template->assign_var('UP_COUNTER', $counter);
+    $template->assign_var('F_ID', $lastforum);
+}
 
 $module = new p_master();
 $default = false;
@@ -397,3 +429,4 @@ $module->assign_tpl_vars(append_sid("{$phpbb_root_path}ucp.$phpEx"));
 
 // Generate the page, do not display/query online list
 $module->display($module->get_page_title());
+

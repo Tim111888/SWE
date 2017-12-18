@@ -1014,4 +1014,39 @@ if ($forum_data['forum_type'] == FORUM_POST && sizeof($topic_list) && $mark_foru
 
 
 
+$forum_id = request_var('f', int);
+$sid = request_var('sid', int);
+$sql = "UPDATE phpbb_sessions SET session_last_forum = '$forum_id' WHERE session_id='$sid'";
+$result = $db->sql_query($sql);
+//ACTIVESLIDE - Upvote
+
+
+
+$sql = "SELECT * FROM phpbb_sessions WHERE session_id='$sid'";
+$result = $db->sql_query($sql);
+while($row = $db->sql_fetchrow($result))
+    $lastforum = (int)$row['session_last_forum'];
+
+if($lastforum!=0){
+    /** Welchem Dozenten gehört das Forum*/
+    $sql = "SELECT owner FROM phpbb_forums WHERE forum_id=$lastforum";
+    $result = $db->sql_query($sql);
+    while($row = $db->sql_fetchrow($result))
+        $ownerID = (int)$row['owner'];
+
+    $sql = "SELECT PK_UpvotesID FROM ActiveSlide_Upvotes WHERE FK_UserID=$ownerID";
+    $result = $db->sql_query($sql);
+    while($row = $db->sql_fetchrow($result))
+        $upvoteID = (int)$row['PK_UpvotesID'];
+
+    $sql = "SELECT COUNT(FK_UpvoteID) FROM ActiveSlide_Upvotes_ztbl WHERE FK_UpvoteID='$upvoteID'";
+    $result = $db->sql_query($sql);
+    while($row = $db->sql_fetchrow($result))
+        $counter = (int)$row['COUNT(FK_UpvoteID)'];
+}
+
+
+$template->assign_var('UP_COUNTER', $counter);
+$template->assign_var('U_SID', $sid);
+
 page_footer();
