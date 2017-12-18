@@ -14,6 +14,8 @@
 /**
 * @ignore
 */
+
+
 if (!defined('IN_PHPBB'))
 {
 	exit;
@@ -23,11 +25,19 @@ class acp_forums
 {
 	var $u_action;
 	var $parent_id = 0;
-
+    var $userTMP;
 	function main($id, $mode)
 	{
 		global $db, $user, $auth, $template, $cache, $request, $phpbb_dispatcher;
 		global $phpbb_admin_path, $phpbb_root_path, $phpEx, $phpbb_log;
+
+        $session_id = request_var('sid', string);
+
+        $sql = "SELECT session_user_id FROM phpbb_sessions WHERE session_id='$session_id'";
+        $result = $db->sql_query($sql);
+
+        while($row = $db->sql_fetchrow($result))
+            $userTMP = (int)$row['session_user_id'];
 
 		$user->add_lang('acp/forums');
 		$this->tpl_name = 'acp_forums';
@@ -109,8 +119,10 @@ class acp_forums
 
 				// No break here
 
-				case 'add':
 
+
+
+				case 'add':
 					$forum_data += array(
 						'parent_id'				=> $request->variable('forum_parent_id', $this->parent_id),
 						'forum_type'			=> $request->variable('forum_type', FORUM_POST),
@@ -168,6 +180,7 @@ class acp_forums
 					if ($action == 'add')
 					{
 						$forum_data['forum_options'] = 0;
+                        $forum_data['owner']=$userTMP;
 					}
 
 					// Use link_display_on_index setting if forum type is link

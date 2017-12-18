@@ -43,7 +43,6 @@
 							<li class="divider"></li>
 							<li><a href="{U_SEARCH}" role="menuitem">{L_SEARCH}</a></li>
 						<!-- ENDIF -->
-
 						<!-- IF not S_IS_BOT and (S_DISPLAY_MEMBERLIST or U_TEAM) -->
 							<li class="divider"></li>
 							<!-- IF S_DISPLAY_MEMBERLIST --><li><a href="{U_MEMBERLIST}" role="menuitem"><i class="fa fa-group fa-fw" aria-hidden="true"></i> {L_MEMBERLIST}</a></li><!-- ENDIF -->
@@ -76,6 +75,32 @@
 		<div class="collapse navbar-collapse pull-right-desktop" id="user-menu">
 			<!-- Desktop user menu -->
 			<ul class="nav navbar-nav navbar-right hidden-xs fix-right-nav">
+
+				<li><a>Momentan zeigen auf</a></li>
+					<li>
+						<form method="get" action="viewforum.php">
+							<input hidden name="f" value={F_ID}>
+							<input hidden name="sid" value={U_SID}>
+							<input hidden name="aufzeigen" value="true">
+							<button>{UP_COUNTER}</button>
+						</form>
+					</li>
+				<!-- IF U_ACP -->
+				<li>
+					<form method="get" action="viewforum.php">
+						<input hidden name="f" value={F_ID}>
+						<input hidden name="sid" value={U_SID}>
+						<input hidden name="reset" value="true">
+						<button>Reset</button>
+					</form>
+				</li>
+				<!-- ENDIF -->
+
+
+
+				<!-- IF F_OWNER-->
+				<!-- ENDIF -->
+
 				<!-- IF S_DISPLAY_PM -->
 					<li>
 						<a href="{U_PRIVATEMSGS}">
@@ -110,6 +135,9 @@
 							<!-- ENDIF -->
 							<!-- IF U_MCP -->
 							<li><a href="{U_MCP}" title="{L_MCP}"><i class="fa fa-gavel fa-fw" aria-hidden="true"></i> {L_MCP_SHORT}</a></li>
+							<!-- ENDIF -->
+							<!-- IF U_ACP -->
+							<li><a href="viewforum.php?f={FORUM_ID}&sid={SESSION_ID}&action=weblinks" title="Weblinks Verwalten"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>Weblinks Verwalten</a></li>
 							<!-- ENDIF -->
 							<!-- EVENT navbar_header_profile_list_after -->
 							<li class="divider"></li>
@@ -163,6 +191,9 @@
 					<!-- ENDIF -->
 					<!-- IF U_MCP -->
 					<li><a href="{U_MCP}" title="{L_MCP}"><i class="fa fa-gavel fa-fw" aria-hidden="true"></i> {L_MCP_SHORT}</a></li>
+					<!-- ENDIF -->
+					<!-- IF U_ACP -->
+					<li><a href="Page" title="Weblinks Verwalten"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>Weblinks Verwalten</a></li>
 					<!-- ENDIF -->
 					<!-- EVENT navbar_header_profile_list_after -->
 					<li class="divider"></li>

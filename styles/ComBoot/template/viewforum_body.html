@@ -16,62 +16,42 @@
 	</div>
 <!-- ENDIF -->
 
-<!-- IF S_FORUM_RULES -->
-	<div class="rules">
-		<div class="alert alert-warning">
-			<!-- IF U_FORUM_RULES -->
-				<a href="{U_FORUM_RULES}">{L_FORUM_RULES}</a>
-			<!-- ELSE -->
-				<i class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i> <strong>{L_FORUM_RULES}</strong>
-				<hr class="message-inner-separator">
-				<p>{FORUM_RULES}</p>
-			<!-- ENDIF -->
-		</div>
-	</div>
+<!-- Überlegen wie man das hier fixen könnte -->
+
+<!-- IF U_ACP and FORUM_DESC -->
+	<!-- INCLUDEPHP ActiveSlideRestrict.php -->
 <!-- ENDIF -->
 
 <!-- IF S_HAS_SUBFORUM -->
 	<!-- IF not S_IS_BOT and U_MARK_FORUMS -->
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-9">
 				<div class="pull-right">
 					<a href="{U_MARK_FORUMS}" class="btn btn-default btn-sm" data-ajax="mark_forums_read">{L_MARK_SUBFORUMS_READ}</a>
 				</div>
 			</div>
 		</div>
 	<!-- ENDIF -->
+<div class="row">
+    <div class="col-md-9">
 	<!-- INCLUDE forumlist_body.html -->
+
+    </div>
+    <div class="col-md-3">
+        <div style="margin: 0 auto; overflow: auto; border: 1px solid black; padding: 2px; text-align: justify; background: transparent; height: 320px">
+            <div>
+                <!-- INCLUDEPHP ActiveSlideGetWeblinks.php -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ENDIF -->
+
+<!-- IF IS_VISIBLE -->
+    <!-- INCLUDEPHP ActiveSlideWeblinksVerwalten.php -->
 <!-- ENDIF -->
 
 <!-- IF S_DISPLAY_POST_INFO or .pagination or TOTAL_POSTS or TOTAL_TOPICS -->
-	<!-- IF TOTAL_TOPICS or .pagination or U_MARK_TOPICS -->
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<div class="btn-group">
-					<!-- IF not S_IS_BOT and U_MARK_TOPICS and .topicrow --><a href="{U_MARK_TOPICS}" class="btn btn-default btn-sm" data-ajax="mark_topics_read">{L_MARK_TOPICS_READ}</a><!-- ENDIF -->
-					<a class="btn btn-default btn-sm disabled">{TOTAL_TOPICS}</a>
-					<!-- IF BASE_URL and TOTAL_PAGES > 6 -->
-						<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							{PAGE_NUMBER} <span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu jump-to">
-							<li>{L_JUMP_TO_PAGE}{L_COLON}</li>
-							<li class="page-jump-form">
-								<div class="input-group input-group-sm">
-									<input type="number" name="page-number" min="1" maxlength="6" title="{L_JUMP_PAGE}" class="form-control" data-per-page="{PER_PAGE}" data-base-url="{BASE_URL|e('html_attr')}" data-start-name="{START_NAME}" />
-									<span class="input-group-btn">
-										<input class="btn btn-primary btn-sm" value="{L_GO}" type="button" />
-									</span>
-								</div>
-							</li>
-						</ul>
-					<!-- ELSE -->
-						<a class="btn btn-default btn-sm disabled">{PAGE_NUMBER}</a>
-					<!-- ENDIF -->
-				</div>
-			</div>
-		</div>
-	<!-- ENDIF -->
 	<div class="row mobile-fix" <!-- IF S_HAS_SUBFORUM -->style="margin-top: 2em;"<!-- ENDIF -->>
 		<!-- IF not S_IS_BOT and S_DISPLAY_POST_INFO -->
 			<div class="col-md-3 col-sm-6 col-xs-12">
@@ -119,6 +99,7 @@
 	</div>
 <!-- ENDIF -->
 
+
 <!-- IF S_NO_READ_ACCESS -->
 	<div class="alert alert-danger" role="alert">
 		<strong>{L_NO_READ_ACCESS}</strong>
@@ -150,6 +131,7 @@
 		</form>
 	<!-- ENDIF -->
 <!-- ENDIF -->
+
 
 <!-- EVENT viewforum_body_topicrow_row_before -->
 
@@ -266,11 +248,6 @@
 		</div>
 	<!-- ENDIF -->
 	<!-- BEGINELSE -->
-		<!-- IF S_IS_POSTABLE -->
-			<div class="alert alert-danger">
-				<strong>{L_NO_TOPICS}</strong>
-			</div>
-	<!-- ENDIF -->
 <!-- END topicrow -->
 
 <!-- IF S_DISPLAY_POST_INFO or .pagination -->

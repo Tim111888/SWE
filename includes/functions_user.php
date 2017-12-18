@@ -14,8 +14,7 @@
 /**
 * @ignore
 */
-if (!defined('IN_PHPBB'))
-{
+if (!defined('IN_PHPBB')) {
 	exit;
 }
 
@@ -27,8 +26,7 @@ if (!defined('IN_PHPBB'))
 * @param array &$username_ary The usernames to check or empty if user ids used
 * @param mixed $user_type Array of user types to check, false if not restricting by user type
 */
-function user_get_id_name(&$user_id_ary, &$username_ary, $user_type = false)
-{
+function user_get_id_name(&$user_id_ary, &$username_ary, $user_type = false) {
 	global $db;
 
 	// Are both arrays already filled? Yep, return else
@@ -70,6 +68,7 @@ function user_get_id_name(&$user_id_ary, &$username_ary, $user_type = false)
 	if (!($row = $db->sql_fetchrow($result)))
 	{
 		$db->sql_freeresult($result);
+
 		return 'NO_USERS';
 	}
 
@@ -106,6 +105,7 @@ function update_last_username()
 		$config->set('newest_username', $row['username'], false);
 		$config->set('newest_user_colour', $row['user_colour'], false);
 	}
+
 }
 
 /**
@@ -399,6 +399,9 @@ function user_add($user_row, $cp_data = false, $notifications_data = null)
 	$vars = array('user_id', 'user_row', 'cp_data');
 	extract($phpbb_dispatcher->trigger_event('core.user_add_after', compact($vars)));
 
+	//TODO:: Add entry for tbl
+    $sql=" INSERT INTO `ActiveSlide_Upvotes` (`PK_UpvotesID`, `FK_UserID`) VALUES (NULL, $user_id)";
+    $db->sql_query($sql);
 	return $user_id;
 }
 

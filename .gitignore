@@ -3,3 +3,9 @@
 *.iml
 
 cache/
+
+adm/
+
+includes/
+
+styles/ComBoot/template/ActiveSlideWeblinksVerwalten\.html

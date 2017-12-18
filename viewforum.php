@@ -19,6 +19,16 @@ $phpbb_root_path = (defined('PHPBB_ROOT_PATH')) ? PHPBB_ROOT_PATH : './';
 $phpEx = substr(strrchr(__FILE__, '.'), 1);
 include($phpbb_root_path . 'common.' . $phpEx);
 include($phpbb_root_path . 'includes/functions_display.' . $phpEx);
+include($phpbb_root_path . 'ActiveSlideVirtualUpvote.' . $phpEx);
+
+if(isset($_GET["action"]))
+{
+    $template->assign_var('IS_VISIBLE', true);
+}
+else
+{
+    $template->assign_var('IS_VISIBLE', false);
+}
 
 // Start session
 $user->session_begin();
@@ -1001,5 +1011,42 @@ if ($forum_data['forum_type'] == FORUM_POST && sizeof($topic_list) && $mark_foru
 {
 	update_forum_tracking_info($forum_id, $forum_data['forum_last_post_time'], false, $mark_time_forum);
 }
+
+
+
+$forum_id = request_var('f', int);
+$sid = request_var('sid', int);
+$sql = "UPDATE phpbb_sessions SET session_last_forum = '$forum_id' WHERE session_id='$sid'";
+$result = $db->sql_query($sql);
+//ACTIVESLIDE - Upvote
+
+
+
+$sql = "SELECT * FROM phpbb_sessions WHERE session_id='$sid'";
+$result = $db->sql_query($sql);
+while($row = $db->sql_fetchrow($result))
+    $lastforum = (int)$row['session_last_forum'];
+
+if($lastforum!=0){
+    /** Welchem Dozenten gehört das Forum*/
+    $sql = "SELECT owner FROM phpbb_forums WHERE forum_id=$lastforum";
+    $result = $db->sql_query($sql);
+    while($row = $db->sql_fetchrow($result))
+        $ownerID = (int)$row['owner'];
+
+    $sql = "SELECT PK_UpvotesID FROM ActiveSlide_Upvotes WHERE FK_UserID=$ownerID";
+    $result = $db->sql_query($sql);
+    while($row = $db->sql_fetchrow($result))
+        $upvoteID = (int)$row['PK_UpvotesID'];
+
+    $sql = "SELECT COUNT(FK_UpvoteID) FROM ActiveSlide_Upvotes_ztbl WHERE FK_UpvoteID='$upvoteID'";
+    $result = $db->sql_query($sql);
+    while($row = $db->sql_fetchrow($result))
+        $counter = (int)$row['COUNT(FK_UpvoteID)'];
+}
+
+
+$template->assign_var('UP_COUNTER', $counter);
+$template->assign_var('U_SID', $sid);
 
 page_footer();
